@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>T1A01</title>
+	<style>
+		html {
+			font-family: "Comic Sans MS";
+			color: white;
+			background-image: url('../gateway.jpeg');
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	Hello <b> World!</b> <br><br>
+
+	<input id="myInput" type=text placeholder="Your Text Here"> <br><br>
+
+	<input type=button value="Output" onclick="{
+
+	myOut = document.getElementById('myArea')
+	myIn = document.getElementById('myInput')
+	//alert(myIn.value)
+
+	for (myCount = 1; myCount <= 7; myCount++){
+		myOut.innerHTML += ' ' + myCount + ':';
+
+		if (myCount == 3 || myCount == 7){
+			myOut.innerHTML+= ' ' + 'Cool <br>'
+		} else {
+			myOut.innerHTML += ' ' + myIn.value + '<br>'
+		}
+	}
+}"> <br><br>
+
+	<div id="myArea"> Your output will go here <br> </div> <br>
+	<input type=button value="Show myOut" onclick="{
+	alert('The variable myOut contains ' + myOut.innerHTML)
+}">
+    <input type=button value="Back" style="font-size:25px; position:fixed; left:30px; bottom:30px;" onclick="window.history.back()">
+</body>
