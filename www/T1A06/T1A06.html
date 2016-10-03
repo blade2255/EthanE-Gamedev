@@ -1,0 +1,51 @@
+<!doctype html>
+<head>
+<link href="../style.css" rel="stylesheet">
+
+   <title>T1A06-spy</title>
+</head>
+<body>
+   <textarea rows=6 cols=70 id=myAreaIn>A happy puppy</textarea>
+
+
+
+
+<br><input type=button value=Encrypt onClick="{
+   myTemp=''   
+   document.all.myAreaOut.value=''
+   for(myCount=0; myCount<document.all.myAreaIn.value.length; myCount++){
+	if(document.all.myAreaIn.value[myCount] =='y'){document.all.myAreaOut.value += 'a'}
+	
+	
+   
+   
+   }
+}">
+
+<br>
+<textarea rows=6 cols=70 id=myAreaOut>Encrypted goes here</textarea>
+
+
+<br><input type=button value=Decrypt  onClick="{
+   myTemp=''
+   document.all.myProof.value=''
+   for(myCount=0; myCount<document.all.myAreaOut.value.length; myCount++){
+	if(document.all.myAreaOut.value[myCount] =='a'){document.all.myProof.value += 'y'}
+
+
+   }
+}">
+
+<br><textarea rows=6 cols=70 id=myProof>Decrypted goes here</textarea>
+
+
+
+
+
+
+
+<input type=button value="Back" style="font-size:25px; position:fixed; left:30px; bottom:30px;" onclick="window.history.back()">
+
+
+</body>
+</html>
