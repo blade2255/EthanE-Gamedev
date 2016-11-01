@@ -1,0 +1,47 @@
+<head>
+    <title>T1A08-Javascript-Events</title>
+    <link href="../style.css" rel="stylesheet">
+</head>
+
+<body onmousedown="isKeyPressed(event)">
+    <script>
+        function copy() {
+            document.getElementById("copied").innerHTML = "I Lied";
+        }
+
+        function cut() {
+            document.getElementById("copied").innerHTML = "You're sneaky, the meaning of life is 42";
+        }
+
+        function isKeyPressed(event) {
+            if (event.altKey) {
+                document.getElementById("altKey").innerHTML = "The ALT key was pressed!";
+            } else {
+                document.getElementById("altKey").innerHTML = "The ALT key was NOT pressed!";
+            }
+        }
+
+        function WhichButton(event) {
+            alert("You pressed button: " + event.button)
+        }
+
+        function OnPaste() {
+            return false;
+        }
+    </script>
+    <h1>Ethan Ericksons T1A08-Javascript-Events</h1><br>
+    <button onclick='document.getElementById("Timeis").innerHTML=Date()'>Click me for the time and date</button>
+    <p id="Timeis"></p>
+    <p onclick="this.innerHTML='This Statement is false'">Click here for a True Statement.</p>
+    <span onmouseover="this.style.fontSize = parseInt(this.style.fontSize) *1.1 + 'px';" style="font-size:16px" ;>Mouse over me!</span><br><br>
+    <input type="text" size="26" oncopy="copy()" oncut="cut()" value="Copy to get the meaning of life">
+    <div id=copied></div><br>
+    <div id=altKey> Click here to find if the ALT key was Pressed. </div><br>
+    <div onmousedown="WhichButton(event)">Click here to find which mouse button you used</div><br>
+    <input type="text" size="40" placeholder="Paste operation is disabled here" onpaste="return OnPaste ()" />
+    <input type="text" size="40" placeholder="Paste operation is enabled here" />
+
+    <input type=button value="Back" style="font-size:25px; position:fixed; left:30px; bottom:30px;" onclick="window.history.back()">
+</body>
+
+</html>

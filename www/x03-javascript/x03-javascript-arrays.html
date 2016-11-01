@@ -1,39 +1,61 @@
-<h3> Instructions</h3>
-Make an array to print out 52 random cards<br>
-Then google how to make a javascript sort function.<br>
-Make a sort function and then reprint out your sorted array.<br><br><br><br>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+function rockPaperScissors() {
+            var userChoice = prompt("Do you choose rock, paper or scissors?");
+            var computerChoice = Math.random();
+            var myOutput = document.getElementById("rpsOutput");
+            var lucky = 1;
+            var luckyOutput = document.getElementById('luckyOutput');
+            if (computerChoice < 0.34) {
+                computerChoice = "rock";
+            } else if (computerChoice <= 0.67) {
+                computerChoice = "paper";
+            } else {
+                computerChoice = "scissors";
+            }
+            console.log("Computer: " + computerChoice);
 
-Following are three random cards<br>
+            var compare = function(choice1, choice2) {
+                if (choice1 == choice2) {
+                    myOutput.innerHTML = "The result is a tie!";
+                } else if (choice1 == "rock") {
+                    if (choice2 == "scissors") {
+                        myOutput.innerHTML = "The Computer chose Scissors, you win with Rock. <br>";
+                    } else {
+                        myOutput.innerHTML = "The Computer chose Paper, you lose with Rock. <br>";
+                    }
+                } else if (choice1 == "paper") {
+                    if (choice2 == "rock") {
+                        myOutput.innerHTML = "The Computer chose Rock, you win with Paper. <br>";
+                    } else {
+                        myOutput.innerHTML = "The Computer chose scissors, you lose with Paper. <br>";
+                    }
+                } else if (choice1 == "scissors") {
+                    if (choice2 == "rock") {
+                        myOutput.innerHTML = "The Computer chose Rock, you lose with Scissors. <br>";
+                    } else {
+                        myOutput.innerHTML = "The Computer chose Paper, you win with Scissors. <br>";
+                    }
+                } else {
+                  myOutput.innerHTML = "Please choose 'rock','paper', or 'scissors'"
+                }
+            }
+            compare(userChoice, computerChoice);
+         for(i=0;i<5;i++){
+            lucky += Math.floor(Math.random() * (999 - 1) + 1);
+            //Math.random = between 0-1, formula = * (max - min) + min, floor makes number a whole number
+          }
+          luckyOutput.innerHTML = "Your lucky number is: " + lucky;
+        }
+    </script>
+</head>
+<body>
+    <input type=button value="Back" style="font-size:25px" onclick="{window.history.back()}"><br><br>
+</body>
+</html>
 
 
-<script>
-document.cards = new Array();
-
-
-// set the cards with random numbers
-
-for (myLoop=1; myLoop<=3; myLoop++){
-      document.cards[myLoop]= Math.floor((Math.random()*100)+1)
-}
-
-// print the random cards to the webpage
-
-for (myLoop=1; myLoop<=3; myLoop++){
-     document.write(document.cards[myLoop] +', ')
-}
-document.write('<br>')
-
-
-
-
-
-
-
-</script>
-
-
-
-
-<br>At the bottom of every page make sure you include the following button:<br>
-
-<input type=button value="Back" style="font-size:25px" onclick="{window.history.back()}"><br><br>

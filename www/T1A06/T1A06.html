@@ -4,7 +4,7 @@
     <link href="../style.css" rel="stylesheet">
     <title>T1A06-spy</title>
     <script type="text/javascript">
-        function encryptTest(inId, offset, outId) {
+        function testEncryption(inId, offset, outId) {
             var str = document.getElementById(inId).value;
             var result = '';
             var character = 0;
@@ -20,10 +20,10 @@
 
 <body>
      <textarea id="textInput" rows=6 cols=70></textarea><br>
-     <input type="button" onclick="encryptTest('textInput', -1, 'textEncrypted');" value="Encrypt"/><br>
-     <textarea id="textEncrypted" rows=6 cols=70></textarea><br>
-     <input type="button" onclick="encryptTest('textEncrypted', +1, 'textDecrypted');" value="Decrypt"/><br>
-     <textarea id="textDecrypted" rows=6 cols=70></textarea>
+     <input type="button" onclick="testEncryption('textInput', -1, 'encryptedText');" value="Encrypt"/><br>
+     <textarea id="encryptedText" rows=6 cols=70></textarea><br>
+     <input type="button" onclick="testEncryption('encryptedText', +1, 'decryptedText');" value="Decrypt"/><br>
+     <textarea id="decryptedText" rows=6 cols=70></textarea>
 </body>
 
 </html>
