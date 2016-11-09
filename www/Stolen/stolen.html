@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pong</title>
+    <link href="../style.css" rel="stylesheet">
+    <script>
+        var canvas;
+        var canvasCtx;
+        var bx;
+        var by;
+        var bw = 7;
+        var bsx = 5;
+        var bsy = 5;
+        var p1y = 250;
+        var p2y = 250;
+        var p1s = 0;
+        var p2s = 0;
+        var winScreen = false;
+        const WINNING_SCORE = 3;
+        const PADDLE_HEIGHT = 100;
+        const PADDLE_WIDTH = 10;
+        
+        function calcMousePos(evt){
+            var rect = canvas.getBoundingClientRect();
+            var root = document.documentElement;
+            var mouseX = evt.clientX - rect.left - root.scrollLeft;
+            var mouseY = evt.clientY - rect.top - root.scrollTop;
+            return {
+                x:mouseX,
+                y:mouseY
+            };
+        }
+        
+        function handleMouseClick(evt){
+            if(winScreen){
+                p1s = 0;
+                p2s = 0;
+                winScreen = false;
+            }
+        }
+        
+        window.onload = function() {
+            canvas = document.getElementById("gameCanvas");
+            canvasCtx = canvas.getContext("2d");
+            bx = canvas.width/2;
+            by = canvas.height/2;
+            
+            var fps = 30;
+            setInterval(function() { moveEverything(); drawEverything(); } , 1000/fps);
+            
+            canvas.addEventListener('mousedown',handleMouseClick);
+            
+            canvas.addEventListener("mousemove", function(evt) {
+                var mousePos = calcMousePos(evt);
+                p1y = mousePos.y - PADDLE_HEIGHT/2;
+            });
+        };
+        
+        function drawEverything() {
+            colorRect(0,0,canvas.width,canvas.height,'black');  //bg
+            canvasCtx.textAlign = "center";
+            
+            if(winScreen){
+                canvasCtx.fillStyle = "white";
+                if(p1s >= WINNING_SCORE){
+                    canvasCtx.fillText("Left Paddle Won!", canvas.width/2, canvas.height/2);
+                }
+                else if(p2s >= WINNING_SCORE){
+                    canvasCtx.fillText("Right Paddle Won!", canvas.width/2, canvas.height/2);
+                }
+                canvasCtx.fillText("Click to Continue", canvas.width/2, canvas.height/2 + 20);
+                return;
+            }
+            
+            drawNet();
+            colorRect(50,p1y,PADDLE_WIDTH,PADDLE_HEIGHT,'white');    //p1
+            colorRect(canvas.width-PADDLE_WIDTH-50,p2y,PADDLE_WIDTH,PADDLE_HEIGHT,'white');   //p2
+            colorCirc(bx,by,bw,'white'); //ball
+            
+            canvasCtx.fillText(p1s, 300, 100);
+            canvasCtx.fillText(p2s, canvas.width-300, 100);
+        }
+        
+        function colorRect(x,y,width,height,color) {
+            canvasCtx.fillStyle = color;
+            canvasCtx.fillRect(x,y,width,height);
+        }
+        
+        function colorCirc(x,y,radius,color){
+            canvasCtx.fillStyle = color;
+            canvasCtx.beginPath();
+            canvasCtx.arc(x,y,radius,0,Math.PI*2,true);
+            canvasCtx.fill();
+        }
+        
+        function drawNet(){
+            for(var i=0; i<canvas.height; i+=40){
+                colorRect(canvas.width/2 - 1, i, 2, 20, 'white');
+            }
+        }
+        
+        function aiMove(){
+            if(p2y+PADDLE_HEIGHT/2 < by-PADDLE_HEIGHT/4){
+                p2y += 6;
+            } else if(p2y+PADDLE_HEIGHT/2 > by+PADDLE_HEIGHT/4) {
+                p2y -= 6;
+            }
+        }
+        
+        function moveEverything() {
+            if(winScreen) return;
+            aiMove();
+            if(by>canvas.height||by<0) bsy *= -1;
+            bx += bsx;
+            by += bsy;
+            
+            if(bx<50+PADDLE_WIDTH+bw/2){
+                if(by>p1y && by<p1y+PADDLE_HEIGHT){
+                    bsx *= -1;
+                    var deltaY = by - (p1y+PADDLE_HEIGHT/2);
+                    bsy = deltaY * 0.35;
+                } else{
+                    p2s++;
+                    ballReset();      //bsx *= -1;
+                }
+            }
+            if(bx>canvas.width-(50+PADDLE_WIDTH+bw/2)){
+                if(by>p2y && by<p2y+PADDLE_HEIGHT){
+                    bsx *= -1;
+                    var deltaY = by - (p2y+PADDLE_HEIGHT/2);
+                    bsy = deltaY * 0.35;
+                } else {
+                    p1s++;
+                    ballReset();
+                }
+            }
+        }
+        
+        function ballReset() {
+            if(p1s >= WINNING_SCORE || p2s >= WINNING_SCORE){
+                winScreen = true;
+            }
+            bsx *= -1;
+            bsy = Math.floor(Math.random()*6);
+            bx = canvas.width/2;
+            by = canvas.height/2;
+        }
+    </script>
+</head>
+<body>
+    <canvas id="gameCanvas" width=800 height=600 border=1></canvas>
+    
+    <input type=button value="Back" style="font-size:25px; position:fixed; left:30px; bottom:30px;" onclick="window.history.back();">
+</body>
+</html>

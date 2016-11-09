@@ -24,6 +24,9 @@
             color: darkgrey;
             /*text-decoration: none;*/
         }
+        ul{
+            margin: 0 auto;
+        }
     </style>
     <script type="text/javascript">
         function move(id, x, y) {
@@ -40,7 +43,7 @@
     <div id="myQuestion">?</div>
     <input type="button" value="Click me" onclick="{document.getElementById('myQuestion').innerHTML ='Hello World'
     }"> <br>
-    <img width=200 id="myImg" style="position:relative; left:0px; top:0px;" src="../grossdog.jpg"></img> <br>
+    <img width=150 id="myImg" style="position:relative; left:0px; top:0px;" src="../grossdog.jpg"></img> <br>
     <a href="https://www.google.ca">Google</a></li>
     <table style="position:absolute; right:20px; bottom:20px;">
         <tr>
@@ -59,6 +62,19 @@
             <td><input type="button" value="↘︎" onclick="move('myImg', 10, 10);" /></td>
         </tr>
     </table><br>
+    <ul style="list-style-type:none">
+        <li>Food list</li>
+        <li>Food</li>
+        <li>Drink</li>
+        <li>Snack foods</li>
+    </ul><br>
+        Choose a vehicle company.<br>
+    <select name="Trucks">
+        <option value="dodge">Dodge</option>
+        <option value="ford">Ford</option>
+        <option value="volkswagen">Volkswagen</option>
+        <option value="nissan">Nissan</option>
+    </select>
     
      <table border=1 align=center>
         <tr>
