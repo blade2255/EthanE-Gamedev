@@ -3,42 +3,35 @@
 <head>
     <title>T1A03-Color</title>
     <link href="../style.css" rel="stylesheet">
-
-</head>
-
-<body>
-    <input type=button value="Loop Add" onclick="{
-myOut = document.getElementById('myArea')
-myIn = document.getElementById('myInput')
-myOut.innerHTML = ''
-}
-}"> <br><br>
-
-    <script type="text/javascript">
-     //   for (var myCount = 1; myCount <= myIn.value; myCount++) {
-     //       if (myCount == 2) {
-     //           myOut.innerHTML += '<font color=red>' + myCount + '</font></br>';
-     //       }
-     //  }
-     function  {
-     return ();
-     }
-document.getElementById(" ").innerHTML = ;
+    <script>
+        function loopAdd(){
+            var myOut = document.getElementById("myArea");
+            for(var i=1; i<=parseInt(document.getElementById("myInput").value); i++){
+                if(i==2){
+                    myOut.innerHTML += '<font color=red>' + i + '</font><br>';
+                }
+                else if(i==4){
+                    myOut.innerHTML += '<font color=blue>' + i + '</font><br>';
+                }
+                else if(i==6||i==7||i==8){
+                    myOut.innerHTML += '<font color=yellow>' + i + '</font><br>';
+                }
+                else if(i>=11){
+                    myOut.innerHTML += '<font color=pink>' + i + '</font><br>';
+                }
+                else{
+                    myOut.innerHTML += i + '<br>';
+                }
+            }
+        }
     </script>
-    
+</head>
+<body>
+    <input type=button value="Loop Add" onclick="loopAdd();"> <br><br>
     <input id="myInput" type="text" value="12"> <br><br>
-
-
-
-
-    <input type="button" value="show Div after clicking Loop Add" onclick="{
-   alert(myOut.innerHTML)
-}">
-
-    <div id="myArea">
-        <font color="red">2</font><br></div> <br>
+    <div id="myArea"></div>
+    
     <input type=button value="Back" style="font-size:25px; position:fixed; left:30px; bottom:30px;" onclick="window.history.back()">
-
 </body>
 
 </html>
