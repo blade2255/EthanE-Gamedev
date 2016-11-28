@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>T2A03-Object</title>
+    <style type="text/css">
+        body{
+        background-image: url('../gateway.jpg');
+        background-attachment: fixed;
+        color: darkgrey;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    </style>
+    <script>
+        function myStudent(myAge, myName, myImg){
+        this.myStudentAge = myAge
+        this.myStudentName = myName
+        this.myStudentImage = myImg
+        this.myBetterInfo = function(){
+        document.getElementById('myDiv1').innerHTML = ' My name is ' + this.myStudentName + ' <br>'
+        };
+    }
+   var myFred = new myStudent(20,'Fred','<img src="fred.jpg"')
+   var myMary = new myStudent(18,'Mary','<img src="mary.jpg"')
+
+    </script>
+</head>
+<body>
+    <input type=button value="Show Fred" onclick="{
+      
+      myFred.myBetterInfo()
+    }">
+    <input type=button value="Show Mary" onclick="{
+      myMary.myBetterInfo()
+    }">
+<div id='myDiv1'>stuff here </div>
+    <audio autoplay loop preload>
+      <source src="../laugh.mp3" type="audio/mpeg">
+    </audio>
+</body>
+</html>

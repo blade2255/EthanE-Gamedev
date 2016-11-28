@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>T2A01-MoveBackround</title>
+    <script> 
+       var myBgPosY = 0;     // present vertical position
+       var myBgPosX = 0;    // present horizonal position
+       var myBgHeight = 402;    // height of background image
+       var myBgWidth = 753;  // width of background image
+       var myBgSpeedYdown = 10000;    // speed moving down 
+       var myBgSpeedXright = 10000;    // speed moving right
+    function myScroll() {
+        myBgPosY +=  myBgSpeedYdown;
+        myBgPosX +=  myBgSpeedXright;
+        myBgSpeedXright ++;
+        myBgSpeedYdown ++;
+        myBgObject.style.backgroundPosition = myBgPosX + "px " + myBgPosY + "px";
+    }
+</script>
+</head>
+<body>
+    <body background="gateway.jpg" style="background-size:100px;" onload="myTimer = setInterval('myScroll()', 100)" >
+    <button onclick="myScroll()">Click me</button>
+</body>
+    <script>        // This object must be after the body tag
+        myBgObject = eval('document.body');
+    </script>
+</html>
+
+
+
+
+
