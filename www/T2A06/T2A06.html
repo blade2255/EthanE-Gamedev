@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link href="../style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>T2A06-WebAudio</title>
+</head>
+<body>
+    <h3><i>Control Volume and playback</i></h3>
+        <audio id="laugh" controls preload style="margin: 0 auto; display:block">
+            <source src="../laugh.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="bleep" controls preload style="margin: 0 auto; display:block">
+            <source src="../bleep.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="honk" controls preload style="margin: 0 auto; display:block">
+            <source src="../honk.mp3" type="audio/mpeg">
+        </audio>
+    <button onclick="document.getElementById('laugh').currentTime =0;document.getElementById('laugh').play();">Play Laugh</button>
+    <button onclick="document.getElementById('bleep').currentTime =0;document.getElementById('bleep').play();">Play Bleep</button>
+    <button onclick="document.getElementById('honk').currentTime =0;document.getElementById('honk').play();">Play Honk</button>
+
+</body>
+</html>
