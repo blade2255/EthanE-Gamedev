@@ -19675,8 +19675,8 @@ cr.getObjectRefTable = function () { return [
 	cr.plugins_.Keyboard,
 	cr.plugins_.Mouse,
 	cr.plugins_.Sprite,
-	cr.plugins_.Text,
 	cr.plugins_.TiledBg,
+	cr.plugins_.Text,
 	cr.behaviors.EightDir,
 	cr.behaviors.bound,
 	cr.behaviors.scrollto,
@@ -19719,7 +19719,7 @@ cr.getObjectRefTable = function () { return [
 	cr.behaviors.EightDir.prototype.acts.SimulateControl,
 	cr.plugins_.Keyboard.prototype.cnds.OnKey,
 	cr.system_object.prototype.acts.RestartLayout,
-	cr.system_object.prototype.acts.SetVar,
-	cr.plugins_.Sprite.prototype.acts.SetPos,
-	cr.system_object.prototype.acts.CreateObject
+	cr.plugins_.Mouse.prototype.cnds.OnClick,
+	cr.system_object.prototype.acts.CreateObject,
+	cr.plugins_.Sprite.prototype.acts.SetPos
 ];};
